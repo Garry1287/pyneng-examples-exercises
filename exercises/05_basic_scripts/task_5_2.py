@@ -24,3 +24,31 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+network = input("Введите IP-сеть: ")
+ip, mask = network.split("/")
+octets= ip.split(".")
+mask_bin = "1" * int(mask) + "0" * (32-int(mask))
+
+
+m1, m2, m3, m4 = [
+    int(mask_bin[0:8], 2),
+    int(mask_bin[8:16], 2),
+    int(mask_bin[16:24], 2),
+    int(mask_bin[24:32], 2),
+]
+
+
+
+output = """
+Network:
+{0:<10}{1:<10}{2:<10}{3:<10}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}
+
+Mask:
+{4}
+{5:<10}{6:<10}{7:<10}{8:<10}
+{5:08b}  {6:08b}  {7:08b}  {8:08b}
+"""
+
+print(output.format(int(octets[0]), int(octets[1]), int(octets[2]), int(octets[3], int(mask), m1, m2, m3, m4)))
